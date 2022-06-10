@@ -1,0 +1,67 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/maryturpin/turing/1Module/projects/Enigma_final/spec/keys_offsets_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          5,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/maryturpin/turing/1Module/projects/Enigma_final/lib/keys_offsets.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          5,
+          25,
+          5,
+          null,
+          null,
+          1,
+          2,
+          22,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/maryturpin/turing/1Module/projects/Enigma_final/spec/enigma_spec.rb": {
+        "lines": [
+
+        ]
+      }
+    },
+    "timestamp": 1654844495
+  }
+}
