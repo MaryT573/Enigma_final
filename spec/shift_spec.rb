@@ -8,6 +8,11 @@ RSpec.describe Shift do
   end
 
   it 'exists' do
-    expect(@shift).to be_a(Shift)
+    expect(@shifts).to be_a(Shift)
+  end
+
+  it 'has a shift hash' do
+    expect(@shifts.shift_hash).to be_a(Hash)
+    expect(@shifts.shift_hash.length).to eq(4)
   end
 end
