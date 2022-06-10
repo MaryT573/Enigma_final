@@ -1,17 +1,17 @@
 require 'time'
 require_relative 'keys_offsets'
 
-class Shift
+class Shift < KeysOffsets
 
   attr_accessor :shift_hash
 
   def initialize
-    @keys_offsets = KeysOffsets.new
+    super
     @shift_hash = {
-      :A => (@keys_offsets.key[0..1] << @keys_offsets.offset[0]).sum,
-      :B => (@keys_offsets.key[1..2] << @keys_offsets.offset[1]).sum,
-      :C => (@keys_offsets.key[2..3] << @keys_offsets.offset[2]).sum,
-      :D => (@keys_offsets.key[3..4] << @keys_offsets.offset[3]).sum
+      :A => (@key[0..1] << @offset[0]).sum,
+      :B => (@key[1..2] << @offset[1]).sum,
+      :C => (@key[2..3] << @offset[2]).sum,
+      :D => (@key[3..4] << @offset[3]).sum
     }
   end
 
