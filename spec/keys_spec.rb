@@ -16,5 +16,6 @@ RSpec.describe Keys do
   it 'can generate a sequence of random numbers' do
     expect(@keys.randomnum.length).to eq(5)
     expect(@keys.randomnum).to be_a(Array)
+    expect(@keys.randomnum.first).to eq(0)
   end
 end
