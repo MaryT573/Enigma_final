@@ -14,12 +14,17 @@ RSpec.describe KeysOffsets do
   end
 
   it 'can generate a sequence of random numbers' do
-    expect(@keysoffsets.randomnum.length).to eq(5)
-    expect(@keysoffsets.randomnum).to be_a(Array)
-    expect(@keysoffsets.randomnum.first).to eq(0)
+    expect(@keysoffsets.key.length).to eq(5)
+    expect(@keysoffsets.key).to be_a(Array)
+    expect(@keysoffsets.key.first).to eq(0)
   end
 
   it 'can find current time in correct format' do
     expect(@keysoffsets.transmission.length).to eq(6)
+  end
+
+  it 'can find offset number' do
+    expect(@keysoffsets.offset.length).to eq(4)
+    expect(@keysoffsets.offset).to be_a(Array)
   end
 end
