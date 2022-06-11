@@ -46,7 +46,6 @@ class Shift < KeysOffsets
         end
       end
     end
-    require "pry"; binding.pry
     return shift.join
   end
 end
