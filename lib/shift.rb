@@ -1,7 +1,9 @@
 require 'time'
 require_relative 'keys_offsets'
+require_relative 'rotatable'
 
 class Shift < KeysOffsets
+  include Rotatable
 
   attr_accessor :shift_hash, :rotate_hash_A, :rotate_hash_B, :rotate_hash_C, :rotate_hash_D
 
@@ -13,22 +15,6 @@ class Shift < KeysOffsets
       :C => (@key[2..3] << @offset[2]).sum,
       :D => (@key[3..4] << @offset[3]).sum
     }
-  end
-
-  def rotate_by_shift_A
-    @rotate_hash_A = Hash[@character_set.zip(@character_set.rotate(@shift_hash[:A]))]
-  end
-
-  def rotate_by_shift_B
-    @rotate_hash_B = Hash[@character_set.zip(@character_set.rotate(@shift_hash[:B]))]
-  end
-
-  def rotate_by_shift_C
-    @rotate_hash_C = Hash[@character_set.zip(@character_set.rotate(@shift_hash[:C]))]
-  end
-
-  def rotate_by_shift_D
-    @rotate_hash_D = Hash[@character_set.zip(@character_set.rotate(@shift_hash[:D]))]
   end
 
   def shifted(message)
