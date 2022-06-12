@@ -1,4 +1,4 @@
-module Rotatable
+module Shiftable
 
   def rotate_by_shift_A
     @rotate_hash_A = Hash[@character_set.zip(@character_set.rotate(@shift_hash[:A]))]

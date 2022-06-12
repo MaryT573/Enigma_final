@@ -1,5 +1,5 @@
 require 'time'
-class KeysOffsets
+class Cipher
 
   attr_accessor :character_set, :key, :transmission, :offset
 

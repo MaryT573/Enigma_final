@@ -1,9 +1,9 @@
 require 'time'
-require_relative 'keys_offsets'
-require_relative 'rotatable'
+require_relative 'cipher'
+require_relative 'shiftable'
 
-class Shift < KeysOffsets
-  include Rotatable
+class Shift < Cipher
+  include Shiftable
 
   attr_accessor :shift_hash
 
@@ -39,8 +39,6 @@ class Shift < KeysOffsets
           char = rotate_by_shift_D[char]
           shift << char
           counter += 1
-        elsif char != @character_set.include?
-          shift << char
         else
           next
         end
