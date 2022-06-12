@@ -8,7 +8,7 @@ RSpec.describe Decrypt do
     @encrypt = Encrypt.new
     @message = "Hello World"
     @message2 = "Hello World!"
-    @encrypted = @encrypt.encrypt("hello world", "02715", "040895")
+    @encrypted = @encrypt.encrypt("hello world", "02715")
   end
 
   it 'exists' do
@@ -20,7 +20,7 @@ RSpec.describe Decrypt do
     expect(@decrypt.decrypt("keder ohulw", "02715", "040895")).to eq("hello world")
   end
 
-  xit 'can decrypt message correctly with only key and no date' do
+  it 'can decrypt message correctly with only key and no date' do
     expect(@decrypt.decrypt(@encrypted, "02715")).to be_a(String)
     expect(@decrypt.decrypt(@encrypted, "02715")).to eq("hello world")
   end
