@@ -1,4 +1,4 @@
-require './lib/keys_offsets'
+require './lib/cipher'
 require './lib/shift'
 
 RSpec.describe Shift do
