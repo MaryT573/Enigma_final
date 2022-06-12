@@ -28,7 +28,7 @@ RSpec.describe Shift do
     expect(@shifts.unshifted(@encrypted)).to eq("hello world")
   end
 
-  xit 'shift ignores punctuation' do
+  it 'shift ignores punctuation' do
     expect(@shifts.shifted(@message2).last).to eq("!")
   end
 end

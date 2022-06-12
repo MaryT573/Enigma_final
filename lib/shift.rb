@@ -39,6 +39,8 @@ class Shift < KeysOffsets
           char = rotate_by_shift_D[char]
           shift << char
           counter += 1
+        elsif char != @character_set.include?
+          shift << char
         else
           next
         end
