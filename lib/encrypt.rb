@@ -13,7 +13,6 @@ class Encrypt < KeysOffsets
 
   def encrypt(message, key = @key, offset = @offset)
     if key != @key
-      key = key
       square = (offset.to_i ** 2).to_s.chars.map {|num| num.to_i}
       offset = square[-4..-1]
       @shift_hash = {

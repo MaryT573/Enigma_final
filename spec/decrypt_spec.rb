@@ -10,7 +10,7 @@ RSpec.describe Decrypt do
   end
 
   it 'exists' do
-    expect(@encrypt).to be_a(Encrypt)
+    expect(@decrypt).to be_a(Decrypt)
   end
 
   it 'can decrypt message correctly with specified input' do
