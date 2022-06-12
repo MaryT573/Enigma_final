@@ -17,8 +17,13 @@ RSpec.describe Encrypt do
     expect(@encrypt.shift_hash.length).to eq(4)
   end
 
-  it 'can shift message correctly' do
-    expect(@encrypt.encrypt(@message2)).to be_a(String)
+  # it 'can encrypt message correctly with specified input' do
+  #   expect(@encrypt.encrypt("hello world", "02715", "040895")).to be_a(String)
+  #   expect(@encrypt.encrypt("hello world", "02715", "040895")).to eq("keder ohulw")
+  # end
+
+  it 'can encrypt message correctly with random generation' do
+    expect(@encrypt.encrypt(@message)).to be_a(String)
   end
 
   xit 'shift ignores punctuation' do
