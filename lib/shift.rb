@@ -17,7 +17,16 @@ class Shift < KeysOffsets
     }
   end
 
-  def shifted(message)
+  def shifted(message, key = @key, offset = @offset)
+    if key != @key
+      key = key.chars.map {|num| num.to_i}
+      offset = offset.chars.map {|num| num.to_i}
+      @shift_hash = {
+        :A => (key[0..1] << offset[0]).sum,
+        :B => (key[1..2] << offset[1]).sum,
+        :C => (key[2..3] << offset[2]).sum,
+        :D => (key[3..4] << offset[3]).sum
+      }
     message = message.downcase.chars.each_slice(4).to_a
     shift = []
     message.each do |arr|
