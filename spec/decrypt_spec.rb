@@ -1,9 +1,10 @@
 require './lib/keys_offsets'
 require './lib/encrypt'
+require './lib/decrypt'
 
-RSpec.describe Encrypt do
+RSpec.describe Decrypt do
   before(:each) do
-    @encrypt = Encrypt.new
+    @decrypt = Decrypt.new
     @message = "Hello World"
     @message2 = "Hello World!"
   end
@@ -12,16 +13,13 @@ RSpec.describe Encrypt do
     expect(@encrypt).to be_a(Encrypt)
   end
 
-  it 'can encrypt message correctly with specified input' do
-    expect(@encrypt.encrypt("hello world", "02715", "040895")).to be_a(String)
-    expect(@encrypt.encrypt("hello world", "02715", "040895")).to eq("keder ohulw")
+  it 'can decrypt message correctly with specified input' do
+    expect(@decrypt.decrypt("keder ohulw", "02715", "040895")).to be_a(String)
+    expect(@decrypt.decrypt("keder ohulw", "02715", "040895")).to eq("hello world")
   end
 
-  it 'can encrypt message correctly with random generation' do
-    expect(@encrypt.encrypt(@message)).to be_a(String)
-  end
 
-  it 'shift ignores punctuation' do
-    expect(@encrypt.encrypt("hello world!", "02715", "040895")).to eq("keder ohulw!")
+  it 'decrypt ignores punctuation' do
+    expect(@decrypt.decrypt("keder ohulw!", "02715", "040895")).to eq("hello world!")
   end
 end
