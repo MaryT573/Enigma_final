@@ -15,8 +15,7 @@ RSpec.describe KeysOffsets do
 
   it 'can generate a sequence of random numbers' do
     expect(@keysoffsets.key.length).to eq(5)
-    expect(@keysoffsets.key).to be_a(Array)
-    expect(@keysoffsets.key.first).to eq(0)
+    expect(@keysoffsets.key).to be_a(String)
   end
 
   it 'can find current time in correct format' do
