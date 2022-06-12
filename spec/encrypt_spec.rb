@@ -12,21 +12,16 @@ RSpec.describe Encrypt do
     expect(@encrypt).to be_a(Encrypt)
   end
 
-  it 'has a randomly generated shift hash' do
-    expect(@encrypt.shift_hash).to be_a(Hash)
-    expect(@encrypt.shift_hash.length).to eq(4)
+  it 'can encrypt message correctly with specified input' do
+    expect(@encrypt.encrypt("hello world", "02715", "040895")).to be_a(String)
+    expect(@encrypt.encrypt("hello world", "02715", "040895")).to eq("keder ohulw")
   end
-
-  # it 'can encrypt message correctly with specified input' do
-  #   expect(@encrypt.encrypt("hello world", "02715", "040895")).to be_a(String)
-  #   expect(@encrypt.encrypt("hello world", "02715", "040895")).to eq("keder ohulw")
-  # end
 
   it 'can encrypt message correctly with random generation' do
     expect(@encrypt.encrypt(@message)).to be_a(String)
   end
 
-  xit 'shift ignores punctuation' do
-    expect(@encrypt.encrypt(@message2).last).to eq("!")
+  it 'shift ignores punctuation' do
+    expect(@encrypt.encrypt("hello world!", "02715", "040895")).to eq("keder ohulw!")
   end
 end

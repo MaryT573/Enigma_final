@@ -9,31 +9,35 @@ class Encrypt < KeysOffsets
 
   def initialize
     super
-    @shift_hash = {
-      :A => (@key[0..1] << @offset[0]).sum,
-      :B => (@key[1..2] << @offset[1]).sum,
-      :C => (@key[2..3] << @offset[2]).sum,
-      :D => (@key[3..4] << @offset[3]).sum
-    }
   end
 
   def encrypt(message, key = @key, offset = @offset)
     if key != @key
-      key = key.chars.map {|num| num.to_i}
-      offset = offset.chars.map {|num| num.to_i}
+      key = key
+      square = (offset.to_i ** 2).to_s.chars.map {|num| num.to_i}
+      offset = square[-4..-1]
       @shift_hash = {
-        :A => (key[0..1] << offset[0]).sum,
-        :B => (key[1..2] << offset[1]).sum,
-        :C => (key[2..3] << offset[2]).sum,
-        :D => (key[3..4] << offset[3]).sum
+        :A => (key[0..1].to_i + offset[0]),
+        :B => (key[1..2].to_i + offset[1]),
+        :C => (key[2..3].to_i + offset[2]),
+        :D => (key[3..4].to_i + offset[3])
+      }
+    else
+      @shift_hash = {
+        :A => (@key[0..1].to_i + @offset[0]),
+        :B => (@key[1..2].to_i + @offset[1]),
+        :C => (@key[2..3].to_i + @offset[2]),
+        :D => (@key[3..4].to_i + @offset[3])
       }
     end
     message = message.downcase.chars.each_slice(4).to_a
     shift = []
+    counter = 0
     message.each do |arr|
       arr.each do |char|
-        counter = 0
-        if counter == 0
+        if @character_set.include?(char) == false
+           shift << char
+        elsif counter == 0
           char = rotate_by_shift_A[char]
           shift << char
           counter += 1
@@ -48,7 +52,7 @@ class Encrypt < KeysOffsets
         elsif counter == 3
           char = rotate_by_shift_D[char]
           shift << char
-          counter += 1
+          counter = 0
         else
           next
         end
