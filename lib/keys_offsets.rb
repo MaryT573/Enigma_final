@@ -8,6 +8,6 @@ class KeysOffsets
     @key = (4.times.map {rand(10)}).unshift(0)
     @transmission = Time.now.strftime("%m%d%y")
     square = (@transmission.to_i ** 2).to_s.chars.map {|num| num.to_i}
-    @offset = square[6..9]
+    @offset = square[-4..-1]
   end
 end
