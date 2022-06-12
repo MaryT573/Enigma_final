@@ -7,7 +7,7 @@ class KeysOffsets
     @character_set = ("a".."z").to_a << " "
     @key = (4.times.map {rand(10)}).unshift(0)
     @transmission = Time.now.strftime("%m%d%y")
-    #square = (@transmission.to_i ** 2).to_s.chars.map {|num| num.to_i}
-    @offset = (@transmission.to_i ** 2).digits[6..9] 
+    square = (@transmission.to_i ** 2).to_s.chars.map {|num| num.to_i}
+    @offset = square[-4..-1]
   end
 end

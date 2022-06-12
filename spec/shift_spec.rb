@@ -6,6 +6,7 @@ RSpec.describe Shift do
     @shifts = Shift.new
     @message = "Hello World"
     @message2 = "Hello World!"
+    @encrypted = @shifts.shifted(@message)
   end
 
   it 'exists' do
@@ -18,7 +19,13 @@ RSpec.describe Shift do
   end
 
   it 'can shift message correctly' do
-    expect(@shifts.shifted(@message2)).to be_a(String)
+    expect(@shifts.shifted(@message)).to be_a(String)
+  end
+
+
+  it 'can unshift message correctly' do
+    expect(@shifts.unshifted(@encrypted)).to be_a(String)
+    expect(@shifts.unshifted(@encrypted)).to eq("hello world")
   end
 
   xit 'shift ignores punctuation' do

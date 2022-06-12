@@ -5,7 +5,7 @@ require_relative 'rotatable'
 class Shift < KeysOffsets
   include Rotatable
 
-  attr_accessor :shift_hash, :rotate_hash_A, :rotate_hash_B, :rotate_hash_C, :rotate_hash_D
+  attr_accessor :shift_hash
 
   def initialize
     super
@@ -18,9 +18,7 @@ class Shift < KeysOffsets
   end
 
   def shifted(message)
-    rotate_hash_A
     message = message.downcase.chars.each_slice(4).to_a
-    message_length = message.length
     shift = []
     message.each do |arr|
       arr.each do |char|
@@ -39,6 +37,37 @@ class Shift < KeysOffsets
           counter += 1
         elsif counter == 3
           char = rotate_by_shift_D[char]
+          shift << char
+          counter += 1
+        else
+          next
+        end
+      end
+    end
+    return shift.join
+  end
+
+  def unshifted(encrypted)
+    reverse
+    encrypted = encrypted.downcase.chars.each_slice(4).to_a
+    shift = []
+    encrypted.each do |arr|
+      arr.each do |char|
+        counter = 0
+        if counter == 0
+          char = @reverse_rotate_by_shift_A[char]
+          shift << char
+          counter += 1
+        elsif counter == 1
+          char = @reverse_rotate_by_shift_B[char]
+          shift << char
+          counter += 1
+        elsif counter == 2
+          char = @reverse_rotate_by_shift_C[char]
+          shift << char
+          counter += 1
+        elsif counter == 3
+          char = @reverse_rotate_by_shift_D[char]
           shift << char
           counter += 1
         else
