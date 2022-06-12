@@ -12,7 +12,7 @@ class Encrypt < KeysOffsets
   end
 
   def encrypt(message, key = @key, offset = @offset)
-    if key != @key
+    if key != @key && offset != @offset
       square = (offset.to_i ** 2).to_s.chars.map {|num| num.to_i}
       offset = square[-4..-1]
       @shift_hash = {
@@ -20,6 +20,22 @@ class Encrypt < KeysOffsets
         :B => (key[1..2].to_i + offset[1]),
         :C => (key[2..3].to_i + offset[2]),
         :D => (key[3..4].to_i + offset[3])
+      }
+    elsif offset != @offset
+      square = (offset.to_i ** 2).to_s.chars.map {|num| num.to_i}
+      offset = square[-4..-1]
+      @shift_hash = {
+        :A => (@key[0..1].to_i + offset[0]),
+        :B => (@key[1..2].to_i + offset[1]),
+        :C => (@key[2..3].to_i + offset[2]),
+        :D => (@key[3..4].to_i + offset[3])
+      }
+    elsif key != @key
+      @shift_hash = {
+        :A => (key[0..1].to_i + @offset[0]),
+        :B => (key[1..2].to_i + @offset[1]),
+        :C => (key[2..3].to_i + @offset[2]),
+        :D => (key[3..4].to_i + @offset[3])
       }
     else
       @shift_hash = {
@@ -29,6 +45,10 @@ class Encrypt < KeysOffsets
         :D => (@key[3..4].to_i + @offset[3])
       }
     end
+    shift(message)
+  end
+
+  def shift(message)
     message = message.downcase.chars.each_slice(4).to_a
     shift = []
     counter = 0

@@ -29,6 +29,10 @@ class Decrypt < KeysOffsets
         :D => (key[3..4].to_i + @offset[3])
       }
     end
+    shift(message)
+  end
+
+  def shift(message)
     reverse
     encrypted = message.downcase.chars.each_slice(4).to_a
     shift = []
