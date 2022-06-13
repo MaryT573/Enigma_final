@@ -7,7 +7,6 @@ class Enigma
   attr_accessor :encrypt, :decrypt
 
   def initialize
-    super
     @encrypt = Encrypt.new
     @decrypt = Decrypt.new
   end
