@@ -21,10 +21,6 @@ RSpec.describe Encrypt do
     expect(@encrypt.encrypt("hello world", "02715")).to be_a(String)
   end
 
-  xit 'can encrypt message correctly with only date' do
-    expect(@encrypt.encrypt("hello world", @key, "040895")).to be_a(String)
-  end
-
   it 'can encrypt message correctly with random generation' do
     expect(@encrypt.encrypt(@message)).to be_a(String)
   end
