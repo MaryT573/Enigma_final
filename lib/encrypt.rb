@@ -72,8 +72,6 @@ class Encrypt < KeysOffsets
           char = rotate_by_shift_D[char]
           shift << char
           counter = 0
-        else
-          next
         end
       end
     end
